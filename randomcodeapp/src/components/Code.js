@@ -16,11 +16,11 @@ class Codegen extends Component {
   }
   getCriteria = () => {
     // ask all prompts and confirms preceded by window.
-    const uppercase = this.state.uppercase.window.confirm('Would you like uppercase letters?')
-    const lowercase = this.state.lowercase.window.confirm('Would you like lowercase letters?')
-    const symbols = this.state.symbols.window.confirm('Would you like symbols?')
-    const numbers = this.state.numbers.window.confirm('Would you like numbers?')
-    const passlength = this.state.length.window.prompt('How many characters would you like your password to have?')
+    const uppercase = window.confirm('Would you like uppercase letters?')
+    const lowercase = window.confirm('Would you like lowercase letters?')
+    const symbols = window.confirm('Would you like symbols?')
+    const numbers = window.confirm('Would you like numbers?')
+    const passlength = window.prompt('How many characters would you like your password to have?')
 
     // this.setState({}) all the values from above
     this.setState({
