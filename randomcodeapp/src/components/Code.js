@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+
+
 class Codegen extends Component {
   constructor(props) {
     super(props);
@@ -9,24 +11,24 @@ class Codegen extends Component {
       lowercase: false,
       symbols: false,
       numbers: false,
-      length: 5,
+      passlength: 5,
     };
   }
   getCriteria = () => {
-    alert("ALERT")
-    const uppercaseC =window.confirm("Would you like uppercase characters?");
-    const lowercaseC =window.confirm; window("Would you like lowercase characters?");
-    const symbolsC =window.confirm("Would you like symbols?");
-    const numbersC =window.confirm("Would you like numbers?");
-    const passwordlen =prompt("How long is the password? 8-128");
+    // ask all prompts and confirms preceded by window.
+    const uppercase = this.state.uppercase.window.confirm('Would you like uppercase letters?')
+    const lowercase = this.state.lowercase.window.confirm('Would you like lowercase letters?')
+    const symbols = this.state.symbols.window.confirm('Would you like symbols?')
+    const numbers = this.state.numbers.window.confirm('Would you like numbers?')
+    const passlength = this.state.length.window.prompt('How many characters would you like your password to have?')
 
     // this.setState({}) all the values from above
     this.setState({
-      uppercaseC: this.state.uppercase,
-      lowercaseC: this.state.lowercase,
-      symbolsC: this.state.symbols,
-      numbersC: this.state.numbers,
-      passwordlen: this.state.length
+      uppercase,
+      lowercase,
+      symbols,
+      numbers,
+      passlength,
     });
 
 
@@ -44,12 +46,18 @@ class Codegen extends Component {
           <h3> Lowercase Characters?</h3>
           <h3> Symbol Characters?</h3>
           <h3> Numbers?</h3>
+          <h2> How long would you like your password?</h2>
         </div>
 
-        <button>Generate Password</button>
+        <button onClick={this.getCriteria}>Generate Password</button>
+
+        <div>
+          <textarea>{this.state.newPass}</textarea>
+        </div>
 
       </div>
     )
   }
 }
+
 export default Codegen;
