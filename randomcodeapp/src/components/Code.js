@@ -30,6 +30,10 @@ class Codegen extends Component {
       numbers,
       passlength,
     });
+
+    const password = this.newPass({ uppercase, lowercase, symbols, numbers, passlength })
+
+    this.setState({ password })
   }
   // add all your methods for generating a password from the above state
 
@@ -42,9 +46,7 @@ class Codegen extends Component {
 
     let charset = lowerAlpha + upperAlpha + finalSymbols + finalNumbers
     // console.log('charset', charset)
-    let value = () => {
-      <textarea> {this.value}</textarea>
-    }
+    let value = ''
 
     //  perform ++i increment before operation
     //  need a way to control the length 
@@ -53,7 +55,6 @@ class Codegen extends Component {
     }
     // console.log('swann done', value)
     return value
-
   }
 
   // newPass = ({ getCharacters }) => {
@@ -86,12 +87,12 @@ class Codegen extends Component {
         <button onClick={this.getCriteria}>Generate Password</button>
 
         <div>
-
+          <textarea value={this.state.password}></textarea>
         </div>
 
       </div>
     )
   }
 }
-
+// https://zoom.us/j/3471110935?pwd=alk4SWJjdEh4Qk1RNVg2L0xCemUvQT09#success
 export default Codegen;
