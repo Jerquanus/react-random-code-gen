@@ -30,11 +30,45 @@ class Codegen extends Component {
       numbers,
       passlength,
     });
-
-
   }
   // add all your methods for generating a password from the above state
 
+  newPass = ({ uppercase, lowercase, symbols, numbers, passlength }) => {
+    var length = passlength
+    let upperAlpha = uppercase ? 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' : ''
+    let lowerAlpha = lowercase ? 'abcdefghijklmnopqrstuvwxyz' : ''
+    let finalSymbols = symbols ? '!@#$%^&*()' : ''
+    let finalNumbers = numbers ? '0123456789' : ''
+
+    let charset = lowerAlpha + upperAlpha + finalSymbols + finalNumbers
+    // console.log('charset', charset)
+    let value = () => {
+      <textarea> {this.value}</textarea>
+    }
+
+    //  perform ++i increment before operation
+    //  need a way to control the length 
+    for (var i = 0, n = charset.length; i < length; ++i) {
+      value += charset.charAt(Math.floor(Math.random() * n))
+    }
+    // console.log('swann done', value)
+    return value
+
+  }
+
+  // newPass = ({ getCharacters }) => {
+  //   let charset = lowerAlpha + upperAlpha + finalSymbols + finalNumbers
+  //   console.log('charset', charset)
+  //   let value = ''
+
+  //   //  perform ++i increment before operation
+  //   //  need a way to control the length 
+  //   for (var i = 0, n = charset.length; i < length; ++i) {
+  //     value += charset.charAt(Math.floor(Math.random() * n))
+  //   }
+  //   console.log('swann done', value)
+  //   return value
+  // }
 
   render() {
     // run all the above methods to calculate the password before rendering    
@@ -52,7 +86,7 @@ class Codegen extends Component {
         <button onClick={this.getCriteria}>Generate Password</button>
 
         <div>
-          <textarea>{this.state.newPass}</textarea>
+
         </div>
 
       </div>
